@@ -1,0 +1,204 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{#post}}              
+    {{#contentFor "meta"}}
+      <!-- Classic Meta Tags -->
+      <title>{{{title}}} | {{@blog.title}}</title>
+      <meta name="description" content="{{excerpt characters="220"}}"/>
+
+      <!-- Open Graph Meta Tags -->
+      <meta property="og:type" content="website"/>
+      <meta property="og:title" content="{{title}}"/>
+      <meta property="og:description" content="{{excerpt characters="220"}}"/>
+      <meta property="og:site_name" content="{{@blog.title}}"/>
+      <meta property="og:url" content="YOUNEEDTOENTERDOMAINHERE{{url}}"/>
+      <meta property="og:image" content="{{image}}"/>
+      <meta property="fb:admins" content="FILL THIS IN WITH THE FB AUTH CODE"/>
+
+      <!-- Twitter Card Meta Tags -->
+      <meta name="twitter:card" content="summary"/>
+      <meta name="twitter:title" content="{{title}}"/>
+      <meta name="twitter:description" content="{{excerpt characters="220"}}"/>
+      <meta name="twitter:image" content="{{image}}"/>
+      <meta name="twitter:site" content="@mxsawyer"/>
+      <meta name="twitter:creator" content="@mxsawyer"/>
+    {{/contentFor}}
+{{/post}}
+
+        {{! Everything inside the #post tags pulls data from the post }}
+        {{#post}}
+ <span itemscope itemtype="http://schema.org/BlogPosting">
+            <div class="post-header" style="background:url({{image}});background-size:cover;">
+                <span class="table-span">
+                <span>
+                    <h1 itemprop="name"><a style="color:white;" href="{{url}}">{{{title}}}</a></h1>
+                    <p style="align:left;color:white;font-size:14px;">Presented By:</p>
+                    <center>
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- Responsiver banner -->
+                        <ins class="adsbygoogle"
+                             style="display:block;max-width:600px;"
+                             data-ad-client="ca-pub-7004039348107787"
+                             data-ad-slot="9147249750"
+                             data-ad-format="auto"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </center>
+
+                        {{#author}}
+                          <!--- <img class="author-image" src="{{image}}" alt="{{name}}"> -->
+                    <span class="author-info" style="text-transform: capitalize;">
+                        {{/author}}
+                         <time itemprop="datePublished" datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMMM, DD, YYYY"}}</time>
+ {{tags separator=" , " prefix=" | "}}
+                    </span>
+                         <!-- <span class="author-info hide-on-mobile" style="float:right;">&nbsp;read</span> 
+                          <span class="author-info post-reading-time " style="float:right;"></span> 
+                          -->
+                </span>
+                </span>
+            </div>
+
+
+    <section id="post-container" role='main' class="main-section hide-post">
+        <div class="grid-container grid-720">
+
+        <article class="post post-page-post" id="{{id}}">
+          <div class="wrapper">
+              <br><br>
+              <section class="post">
+                  {{content}}   
+                  <div class="social-sharing" data-permalink="{{url}}">
+                      <center>
+                          Did you like this post? Share it with your friends!
+
+                    <div class="social-sharing is-large" data-permalink="{{url}}">
+
+                        <!-- https://developers.facebook.com/docs/plugins/share-button/ -->
+                        <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://dftbh.com{{url}}" class="share-facebook">
+                          <span class="icon icon-facebook" aria-hidden="true"></span>
+                          <span class="share-title">Share</span>
+                          <span class="share-count">0</span>
+                        </a>
+
+                        <!-- https://dev.twitter.com/docs/intents -->
+                        <a target="_blank" href="http://twitter.com/share?url=http://dftbh.com{{url}}&amp;text={{title}}&amp;via=mxsawyer" class="share-twitter">
+                          <span class="icon icon-twitter" aria-hidden="true"></span>
+                          <span class="share-title">Tweet</span>
+                          <span class="share-count">0</span>
+                        </a>
+
+                        <!--
+                          https://developers.pinterest.com/pin_it/
+                          Pinterest get data from the same Open Graph meta tags Facebook uses
+                        -->
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http://dftbh.com{{url}}" class="share-pinterest">
+                          <span class="icon icon-pinterest" aria-hidden="true"></span>
+                          <span class="share-title">Pin it</span>
+                          <span class="share-count">0</span>
+                        </a>
+
+                        <!-- https://developers.google.com/+/web/share/ -->
+                        <a target="_blank" href="http://plus.google.com/share?url=http://labs.carsonshold.com/social-sharing-buttons" class="share-google">
+                          <!-- Cannot get Google+ share count with JS yet -->
+                          <span class="icon icon-google" aria-hidden="true"></span>
+                          <span class="share-count">+1</span>
+                        </a>
+                        </center>
+                  </div>
+                      
+                      <ul class="related-posts">
+                      </ul>
+                  
+                  {{#if tags}}
+                  
+                  
+                  <p>More: {{tags separator=" , "}}</p>
+                {{/if}}
+                
+              </section>
+              <footer >
+                {{! Everything inside the #author tags pulls data from the author }}
+                <section class="post-page-author">
+                    <center style="padding-top: 10px;padding-bottom: 10px;">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- Responsiver banner -->
+                            <ins class="adsbygoogle"
+                                 style="display:block;max-width:600px;"
+                                 data-ad-client="ca-pub-7004039348107787"
+                                 data-ad-slot="9147249750"
+                                 data-ad-format="auto"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </center>
+                <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                    <div class="fb-comments"
+                         data-href="{{url absolute="true"}}"
+                         data-numposts="10"
+                         data-width="100%"
+                         data-colorscheme="light">
+                  </div>
+                    {{#author}}
+                    <small style="margin: 0 0 0px;">About the editor</small>
+                  <div class="author-wrapper" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <ul>
+                      {{#if image}}
+                      <li><a href="{{url}}"><img src="{{image}}" alt="{{name}}"></a></li>
+                        <li>
+                            
+                      {{else}}
+                        <li style="margin-left:0;" >
+                      {{/if}}
+                      
+                      <h3 rel="author" itemprop="url name"><a href="{{url}}">{{name}}</a></h3>
+                      {{#if website}}
+                        <p><a href="{{url}}"><i class="ion-plus"></i> View more posts from this editor</a> &nbsp; <a href="{{website}}" target="_blank"><i class="ion-home" style="font-size:;"></i> Website</a> &nbsp;</p>
+                      {{/if}}
+                      {{#if bio}}
+                            
+                        <p>{{{bio}}}</p>
+                      {{else}}
+                        <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+                      {{/if}}
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+                {{/author}}
+              </footer>  
+                
+
+
+</section>
+          </div>
+        </article>
+        </div>
+    </section>
+    
+</span>
+ 
+
+<script type="text/javascript">
+$(document).scroll(function() {
+  var dHeight = $('.post-header').height();
+  if (dHeight >= $(this).scrollTop()) {
+    $('.navbar').css('background', 'rgba(42, 106, 244, ' + $(this).scrollTop() / dHeight * 1.08 + ')');
+  }
+});
+</script>
+
+{{/post}}
+
+

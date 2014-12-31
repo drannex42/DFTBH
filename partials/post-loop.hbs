@@ -1,0 +1,61 @@
+<section class="heading-small">Featured Posts</section>
+<br>
+<section class="heading-small-border"></section>
+{{#foreach posts}}
+{{#if featured}}
+    <article class="post" id="{{id}}" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="wrapper">
+            <header>
+                <h2 class="post-title" itemprop="name headline"><a href="{{url}}" class="post-link">{{{title}}}</a></h2>
+            </header>
+             <section class="post-text" itemprop="articleBody text">
+                <p>{{excerpt words="50"}}&hellip;</p>
+            </section> 
+            <footer>
+                <ul>
+                   {{#author}}
+                    <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    {{/author}}
+                        <span class="author-info">
+                        {{tags separator=" , " prefix=""}}
+                    </span>
+                        </span>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+    </article>
+{{/if}}
+{{/foreach}}
+<section class="heading-small">All Posts</section>
+<br>
+<section class="heading-small-border"></section>
+
+{{#foreach posts}}
+    <article class="post" id="{{id}}" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="wrapper">
+            <header>
+                <div class="index-post-image">
+                    <a href="{{url}}"><img src="{{image}}"></a>
+                </div>
+                <h2 class="post-title" itemprop="name headline"><a href="{{url}}" class="post-link">{{{title}}}</a></h2>
+            </header>
+            <section class="post-text" itemprop="articleBody text">
+                <p>{{excerpt words="25"}}&hellip;</p>
+            </section>
+            <footer>
+                <ul>
+                   {{#author}}
+                    <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    {{/author}}
+                        <span class="author-info">
+                        {{tags separator=" , " prefix=""}}
+                    </span>
+                        </span>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+    </article>
+
+    {{/foreach}}

@@ -1,0 +1,59 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! The big featured header on the homepage, with the site logo and description }}
+              
+              
+<header class="main-header" style="background:url({{@blog.cover}});background-size:cover;">
+    <div class="wrapper">
+        <div class="grid-container grid-720">
+            <div class="index-header">
+                <span class="table-span">
+                    <span>
+                        <h1 id="tag-search" style="text-transform: capitalize;"></h1>
+                        <p style="align:left;color:white;font-size:14px;">Presented By:</p>
+                        <center>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- Responsiver banner -->
+                            <ins class="adsbygoogle"
+                                 style="display:block;max-width:600px;"
+                                 data-ad-client="ca-pub-7004039348107787"
+                                 data-ad-slot="9147249750"
+                                 data-ad-format="auto"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </center>
+                        
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="post-container" role='main' class="main-section hide-post">
+    <div class="grid-container grid-720">
+    <br>
+        <section class="heading-small">Posts</section>
+        <br>
+        <section class="heading-small-border"></section>
+
+    {{! The tag below includes the post loop - partials/post-loop.hbs }}
+    {{> "post-loop"}}
+
+    {{!! After all the posts, we have the previous/next pagination links }}
+    {{pagination}}
+    </div>
+</section>
+
+<script type="text/javascript">
+$(document).scroll(function() {
+  var dHeight = $(this).height()-$(window).height();
+  if (dHeight >= $(this).scrollTop()) {
+    $('.navbar').css('background', 'rgba(0,97,204,' + $(this).scrollTop() / dHeight * 2 + ')');
+  }
+});
+</script>

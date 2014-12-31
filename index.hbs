@@ -1,0 +1,94 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+
+{{! The big featured header on the homepage, with the site description }}
+
+              
+{{#contentFor "meta"}}
+  <!-- Classic Meta Tags -->
+  <title>{{@blog.title}}</title>
+  <meta name="description" content="{{@blog.description}}">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="{{@blog.title}}"/>
+  <meta property="og:description" content="{{@blog.description}}"/>
+  <meta property="og:site_name" content="{{@blog.title}}"/>
+  <meta property="og:url" content="NEED TO FILL THIS IN"/>
+  <meta property="og:image" content="DOMAINGOESHERE{{@blog.cover}}"/>
+  <meta property="fb:admins" content="100006090000201"/>
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="@{{@blog.description}}"/>
+  <meta name="twitter:title" content="{{@blog.title}}"/>
+  <meta name="twitter:description" content="{{@blog.description}}"/>
+  <meta name="twitter:image" content="DOMAINGOESHERE{{@blog.cover}}"/>
+  <meta name="twitter:site" content="@mxsawyer"/>
+  <meta name="twitter:creator" content="@mxsawyer"/>
+{{/contentFor}}
+
+<header class="main-header" style="background:url({{@blog.cover}});background-size:cover;">
+    <div class="wrapper">
+        <div class="grid-container grid-720">
+            <div class="index-header">
+                <span class="table-span">
+                    <span>
+                        <h1 itemprop="name"><a style="color:white;text-decoration:none;"href="/">{{@blog.title}}</a></h1>
+                        <h2 itemprop="description">{{@blog.description}}</h2>
+                        <p style="align:left;color:white;font-size:14px;">Presented By:</p>
+                        <center>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- Responsiver banner -->
+                            <ins class="adsbygoogle"
+                                 style="display:block;max-width:600px;max-height:100px"
+                                 data-ad-client="ca-pub-7004039348107787"
+                                 data-ad-slot="9147249750"
+                                 data-ad-format="auto"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </center>
+                        
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+{{! The main content area on the homepage }}
+<br>
+<section id="post-container" role='main' class="main-section hide-post">
+    <div class="grid-container grid-720">
+    {{#if @blog.cover}}<img id="bg-img" src="{{@blog.cover}}">{{/if}}
+
+    {{! Each post will be output using this markup }}
+    
+    {{! The tag below includes the post loop - partials/post-loop.hbs }}
+    {{> "post-loop"}}
+    </div>
+
+
+</section>
+<section>
+    <div class="grid-container grid-720">
+        {{pagination}}
+    </div>
+</section>
+<center>
+<img scr="http://jxnblk.com/loading/loading-bars.svg">
+</center>
+<script type="text/javascript">
+$(document).scroll(function() {
+  var dHeight = $('.main-header').height();
+  if (dHeight >= $(this).scrollTop()) {
+    $('.navbar').css('background', 'rgba(42, 106, 244, ' + $(this).scrollTop() / dHeight * 1.08 + ')');
+  }
+});
+</script>
